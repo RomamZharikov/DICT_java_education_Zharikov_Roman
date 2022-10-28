@@ -19,15 +19,18 @@ public class Hangman {
         while (life > 0) {
             System.out.printf("You life: %d\nGuess the word %s: ", life, String.valueOf(result_char));
             char char_answer = input.nextLine().toCharArray()[0];
-            char[] new_result_char = checkout(result_array, result_char, char_answer);
-            if (new_result_char == null)
+            char[] new_result_char = checkout(result_array, result_char.clone(), char_answer);
+            if (new_result_char == null) {
                 life--;
-            else if (Arrays.equals(new_result_char, result_array)) {
+                System.out.println("That letter doesn`t appear in the word");
+            } else if (Arrays.equals(new_result_char, result_array)) {
                 System.out.println("You win!!!");
                 break;
-            }
-            else
-                result_char = new_result_char;
+            } else if (Arrays.equals(new_result_char, result_char)) {
+                System.out.println("No improvements");
+                life--;
+            } else if (!(boolean) Arrays.equals(new_result_char, result_char))
+                result_char = new_result_char.clone();
         }
         if (life <= 0)
             System.out.println("You lose!!!");
