@@ -1,14 +1,18 @@
 package CoffeeMachine;
 
 public class CoffeeMachine {
-    public static void main(String[] args){
-        System.out.println("""
-                Starting to made a coffee
-                Grinding coffee beans
-                Mixing boiled water with crushed coffee beans
-                Pouring coffee into the cup
-                Pouring some milk into the cup
-                Coffee is ready!
-                """);
+    private final int cups_needed;
+
+    public CoffeeMachine(int cups_needed){
+        this.cups_needed = cups_needed;
+    }
+    public void output_coffee(){
+
+        System.out.printf("""
+                For %d cups coffee you need:
+                %d ml of water
+                %d ml of milk
+                %d g of coffee beans
+                """, cups_needed, cups_needed * 200, cups_needed * 50, cups_needed * 15);
     }
 }
