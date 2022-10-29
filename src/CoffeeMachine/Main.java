@@ -10,13 +10,10 @@ public class Main {
         while (exit == 0) {
             System.out.println("\nWrite action (buy, fill, take, remaining or exit):");
             String choice = input.nextLine();
-            switch (choice) {
-                case "buy" -> coffee.buy_menu();
-                case "fill" -> coffee.fill();
-                case "take" -> coffee.take();
-                case "remaining" -> coffee.out_values();
-                case "exit" -> exit = 1;
-                default -> System.out.println("Unknown variable: " + choice);
+            if ("exit".equals(choice)) {
+                exit = 1;
+            } else {
+                coffee.coffee_machine_menu(choice);
             }
         }
     }
